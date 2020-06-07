@@ -79,4 +79,15 @@ RSpec.describe "Forecast Request" do
       end
     end
   end
+  describe "Forecast Background Images by City", :vcr do
+    it "Background Image Request" do
+      get "/api/v1/backgrounds?location=denver,co"
+
+      expect(response).to be_successful
+
+      parsed_background = JSON.parse(response.body, symbolize_names: true)
+
+      expect(parsed_background[:data][:attributes][:image]).to_not eq(nil)
+    end
+  end
 end
