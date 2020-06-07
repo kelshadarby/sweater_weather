@@ -6,7 +6,7 @@ class Api::V1::ForecastController < ApplicationController
   private
 
   def get_weather_object
-    (WeatherService.new).get_weather_objects(get_geocode_object)
+    (ForecastService.new).get_weather_objects(get_geocode_object)
   end
 
   def get_geocode_object

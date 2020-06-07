@@ -1,4 +1,4 @@
-class WeatherService
+class ForecastService
   def get_weather_objects(geocode_object)
     weather_info = get_weather_info(geocode_object)
     Forecast.new(weather_info, geocode_object)
