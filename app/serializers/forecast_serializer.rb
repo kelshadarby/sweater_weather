@@ -1,19 +1,19 @@
 class ForecastSerializer
   include FastJsonapi::ObjectSerializer
-  attributes  :location_info,
+  attributes  :actual_temp,
               :current_time_month_day,
-              :actual_temp,
-              :high_temp,
-              :low_temp,
-              :weather_description,
               :feels_like,
+              :high_temp,
+              :hourly_weather_forecast,
               :humidity,
-              :visibility,
-              :uv_index,
+              :location_info,
+              :low_temp,
               :sunrise_time,
               :sunset_time,
-              :week_weather_forecast,
-              :hourly_weather_forecast
+              :uv_index,
+              :visibility,
+              :weather_description,
+              :week_weather_forecast
 
   set_id { |i| i = 1 }
 end

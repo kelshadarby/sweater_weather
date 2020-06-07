@@ -1,11 +1,15 @@
 class Api::V1::ForecastController < ApplicationController
   def show
-    geocode = GeocodingService.new
-    geocode_object = geocode.get_geocode_objects(params[:location])
+    render json: ForecastSerializer.new(get_weather_object)
+  end
 
-    weather = WeatherService.new
-    weather_object = weather.get_weather_objects(geocode_object)
+  private
 
-    render json: ForecastSerializer.new(weather_object)
+  def get_weather_object
+    (WeatherService.new).get_weather_objects(get_geocode_object)
+  end
+
+  def get_geocode_object
+    (GeocodingService.new).get_geocode_objects(params[:location])
   end
 end
