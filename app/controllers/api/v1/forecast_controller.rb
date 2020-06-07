@@ -1,12 +1,12 @@
 class Api::V1::ForecastController < ApplicationController
   def show
-    render json: ForecastSerializer.new(get_weather_object)
+    render json: ForecastSerializer.new(get_forecast_object)
   end
 
   private
 
-  def get_weather_object
-    (ForecastService.new).get_weather_objects(get_geocode_object)
+  def get_forecast_object
+    (ForecastService.new).get_forecast_objects(get_geocode_object)
   end
 
   def get_geocode_object
