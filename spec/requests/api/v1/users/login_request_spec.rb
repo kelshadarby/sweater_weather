@@ -36,4 +36,17 @@ RSpec.describe "User Login" do
     expect(session_response[:data][:attributes][:email]).to_not eq(nil)
     expect(session_response[:data][:attributes][:api_key]).to_not eq(nil)
   end
+  it "Session Creation - Incorrect Email" do
+    user_params = {
+      "email": "whatever@example.com",
+      "password": "password"
+    }
+    post "/api/v1/sessions", params: {user: user_params}
+
+    expect(response).to_not be_successful
+
+    session_response = JSON.parse(response.body, symbolize_names: true)
+
+    expect(session_response[:error]).to eq("Bad credentials. Please double check login request.")
+  end
 end

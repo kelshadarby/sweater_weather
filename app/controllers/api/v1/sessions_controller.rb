@@ -1,7 +1,12 @@
 class Api::V1::SessionsController < ApplicationController
   def create
-    session[:user] = User.find_by(email: params[:user][:email])
-    render json: UsersSerializer.new(session[:user])
+    user = User.find_by(email: params[:user][:email])
+    if user
+      session[:user] = user
+      render json: UsersSerializer.new(user)
+    else
+      render json: { error: "Bad credentials. Please double check login request." }, status: 422
+    end
   end
 
   private
