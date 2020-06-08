@@ -72,6 +72,7 @@ VCR.configure do |config|
   config.filter_sensitive_data('<GEOCODING_API_KEY') { ENV['GEOCODING_API_KEY'] }
   config.filter_sensitive_data('<UNSPLASH_ACCESS_KEY') { ENV['UNSPLASH_ACCESS_KEY'] }
   config.configure_rspec_metadata!
+  config.allow_http_connections_when_no_cassette = true
 end
 
 Shoulda::Matchers.configure do |config|
