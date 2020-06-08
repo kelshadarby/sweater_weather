@@ -73,3 +73,11 @@ VCR.configure do |config|
   config.filter_sensitive_data('<UNSPLASH_ACCESS_KEY') { ENV['UNSPLASH_ACCESS_KEY'] }
   config.configure_rspec_metadata!
 end
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+
+    with.library :rails
+  end
+end
