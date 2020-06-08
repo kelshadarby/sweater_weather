@@ -1,7 +1,7 @@
-class TripService
-  def get_restaurant_object(location, cuisine)
+class ZomatoService
+  def get_restaurant_object(start_location, end_location, cuisine)
     restaurant_info = get_restaurants(location, cuisine)
-    FoodieFacade.new(restaurant_info)
+    FoodieFacade.new(start_location, end_location, restaurant_info)
   end
 
   private
@@ -24,9 +24,5 @@ class TripService
   def get_latitude(location)
     geocode = (GeocodingService.new).get_geocode_objects(params[:end])
     geocode.latitude
-  end
-
-  def get_trip_info
-
   end
 end

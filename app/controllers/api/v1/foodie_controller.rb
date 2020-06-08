@@ -1,20 +1,20 @@
 class Api::V1::FoodieController < ApplicationController
   def show
-    trip_response = Faraday.get("https://maps.googleapis.com/maps/api/directions/json") do |f|
-      f.params[:origin] = params[:start]
-      f.params[:destination] = params[:end]
-      f.params[:key] = ENV["GEOCODING_API_KEY"]
-    end
-
-    parsed_trip_response = JSON.parse(trip_response.body, symbolize_names: true)
-    duration = parsed_trip_response[:routes][0][:legs][0][:duration][:text]
-
-    # Forecast Data
-    json = ForecastSerializer.new(get_forecast_object).serialized_json
-    parsed = JSON.parse(json, symbolize_names: true)
-
-    forecast_temp = parsed[:data][:attributes][:actual_temp]
-    forecast_description = parsed[:data][:attributes][:weather_description]
+    # trip_response = Faraday.get("https://maps.googleapis.com/maps/api/directions/json") do |f|
+    #   f.params[:origin] = params[:start]
+    #   f.params[:destination] = params[:end]
+    #   f.params[:key] = ENV["GEOCODING_API_KEY"]
+    # end
+    #
+    # parsed_trip_response = JSON.parse(trip_response.body, symbolize_names: true)
+    # duration = parsed_trip_response[:routes][0][:legs][0][:duration][:text]
+    #
+    # # Forecast Data
+    # json = ForecastSerializer.new(get_forecast_object).serialized_json
+    # parsed = JSON.parse(json, symbolize_names: true)
+    #
+    # forecast_temp = parsed[:data][:attributes][:actual_temp]
+    # forecast_description = parsed[:data][:attributes][:weather_description]
 
     # Geocode Lat Lon
     # obj = (GeocodingService.new).get_geocode_objects(params[:end])
@@ -31,8 +31,8 @@ class Api::V1::FoodieController < ApplicationController
     #
     # parsed_zomato_response = JSON.parse(zomato_response.body, symbolize_names: true)
 
-    name = parsed_zomato_response[:restaurants][0][:restaurant][:name]
-    address = parsed_zomato_response[:restaurants][0][:restaurant][:location][:address]
+    # name = parsed_zomato_response[:restaurants][0][:restaurant][:name]
+    # address = parsed_zomato_response[:restaurants][0][:restaurant][:location][:address]
   end
 
   private
