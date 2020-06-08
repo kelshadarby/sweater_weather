@@ -17,10 +17,9 @@ class FoodieFacade
   end
 
   def forecast
-    serialized_forecast = get_serialized_forecast
     {
-      summary: serialized_forecast[:data][:attributes][:weather_description],
-      temperature: serialized_forecast[:data][:attributes][:actual_temp]
+      summary: get_serialized_forecast[:data][:attributes][:weather_description],
+      temperature: get_serialized_forecast[:data][:attributes][:actual_temp]
     }
   end
 

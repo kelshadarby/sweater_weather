@@ -6,7 +6,7 @@ class FoodieService
     @cuisine = cuisine
   end
 
-  def get_restaurant_object
+  def get_foodie_facade
     restaurant_info = get_restaurants
     FoodieFacade.new(@start_location, @end_location, restaurant_info)
   end
