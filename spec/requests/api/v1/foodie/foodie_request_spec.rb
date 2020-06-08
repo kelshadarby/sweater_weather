@@ -35,5 +35,8 @@ RSpec.describe "Foodie Request" do
     expect(parsed_food_response[:data][:attributes][:forecast][:temperature]).to_not eq(nil)
     expect(parsed_food_response[:data][:attributes][:restaurant][:name]).to_not eq(nil)
     expect(parsed_food_response[:data][:attributes][:restaurant][:address]).to_not eq(nil)
+    expect(parsed_food_response[:data][:attributes][:travel_time]).to eq("1 hour 48 mins")
+    expect(parsed_food_response[:data][:attributes][:restaurant][:name]).to eq("Angelo's Pizza Parlor")
+    expect(parsed_food_response[:data][:attributes][:restaurant][:address]).to eq("105 E Riverwalk, Pueblo 81003")
   end
 end
