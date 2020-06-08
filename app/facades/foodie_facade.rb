@@ -30,17 +30,17 @@ class FoodieFacade
 
   private
 
-  def get_serialized_forecast
-    json = ForecastSerializer.new(get_forecast_object).serialized_json
-    JSON.parse(json, symbolize_names: true)
-  end
+    def get_serialized_forecast
+      json = ForecastSerializer.new(get_forecast_object).serialized_json
+      JSON.parse(json, symbolize_names: true)
+    end
 
-  def get_forecast_object
-    forecast_service = ForecastService.new(@end_location)
-    forecast_service.get_forecast_objects
-  end
+    def get_forecast_object
+      forecast_service = ForecastService.new(@end_location)
+      forecast_service.get_forecast_objects
+    end
 
-  def trip_duration
-    (GeocodingService.new).get_trip_duration(@start_location, @end_location)
-  end
+    def trip_duration
+      (GeocodingService.new).get_trip_duration(@start_location, @end_location)
+    end
 end
