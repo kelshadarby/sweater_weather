@@ -37,14 +37,14 @@ RSpec.describe "User Creation" do
 
     expect(response).to be_successful
 
-    parsed_user_registration_1 = JSON.parse(response.body, symbolize_names: true)
-
     user_params = {
       "email": "whatever@example.com",
       "password": "password",
       "password_confirmation": "password"
     }
     post "/api/v1/users", params: {user: user_params}
+
+    expect(response).to_not be_successful
 
     parsed_user_registration_2 = JSON.parse(response.body, symbolize_names: true)
 
@@ -58,6 +58,8 @@ RSpec.describe "User Creation" do
     }
     post "/api/v1/users", params: {user: user_params}
 
+    expect(response).to_not be_successful
+
     parsed_user_registration_2 = JSON.parse(response.body, symbolize_names: true)
 
     expect(parsed_user_registration_2[:errors][0]).to eq("Password confirmation doesn't match Password")
@@ -69,6 +71,8 @@ RSpec.describe "User Creation" do
       "password_confirmation": "password"
     }
     post "/api/v1/users", params: {user: user_params}
+
+    expect(response).to_not be_successful
 
     parsed_user_registration_2 = JSON.parse(response.body, symbolize_names: true)
 
