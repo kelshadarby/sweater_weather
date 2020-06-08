@@ -14,7 +14,7 @@ class Api::V1::FoodieController < ApplicationController
     parsed = JSON.parse(json, symbolize_names: true)
 
     forecast_temp = parsed[:data][:attributes][:actual_temp]
-    forecast_deswcription = parsed[:data][:attributes][:weather_description]
+    forecast_description = parsed[:data][:attributes][:weather_description]
 
     # Geocode Lat Lon
     obj = (GeocodingService.new).get_geocode_objects(params[:end])
