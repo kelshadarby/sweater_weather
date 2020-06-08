@@ -1,15 +1,12 @@
 class FoodieFacade
-  attr_reader :id
+  attr_reader :id,
+              :end_location
 
   def initialize(start_location, end_location, restaurant_info)
     @id = "null"
     @restaurant_info = restaurant_info
     @start_location = start_location
     @end_location = end_location
-  end
-
-  def end_location
-    @end_location
   end
 
   def restaurant
