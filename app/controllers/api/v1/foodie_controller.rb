@@ -1,5 +1,6 @@
 class Api::V1::FoodieController < ApplicationController
   def show
+    render json: FoodieSerializer.new(get_foodie_facade)
     # trip_response = Faraday.get("https://maps.googleapis.com/maps/api/directions/json") do |f|
     #   f.params[:origin] = params[:start]
     #   f.params[:destination] = params[:end]
@@ -37,8 +38,7 @@ class Api::V1::FoodieController < ApplicationController
 
   private
 
-  def get_forecast_object
-    forecast_service = ForecastService.new(params[:end])
-    forecast_service.get_forecast_objects
+  def get_foodie_facade
+    (ZomatoService.new).get_restaurant_object(params[:start], params[:end], params[:search])
   end
 end

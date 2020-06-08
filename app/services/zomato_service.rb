@@ -1,6 +1,6 @@
 class ZomatoService
   def get_restaurant_object(start_location, end_location, cuisine)
-    restaurant_info = get_restaurants(location, cuisine)
+    restaurant_info = get_restaurants(end_location, cuisine)
     FoodieFacade.new(start_location, end_location, restaurant_info)
   end
 
@@ -11,18 +11,18 @@ class ZomatoService
       f.headers[:user_key] = ENV["ZOMATO_API_KEY"]
       f.params[:lat] = get_latitude(location)
       f.params[:lon] = get_longitude(location)
-      f.params[:q] = params[:search]
+      f.params[:q] = cuisine
     end
     JSON.parse(zomato_response.body, symbolize_names: true)
   end
 
   def get_longitude(location)
-    geocode = (GeocodingService.new).get_geocode_objects(params[:end])
+    geocode = (GeocodingService.new).get_geocode_objects(location)
     geocode.longitude
   end
 
   def get_latitude(location)
-    geocode = (GeocodingService.new).get_geocode_objects(params[:end])
+    geocode = (GeocodingService.new).get_geocode_objects(location)
     geocode.latitude
   end
 end

@@ -20,8 +20,8 @@ class GeocodingService
 
     def get_trip_info(start_location, end_location)
       trip_response = Faraday.get("https://maps.googleapis.com/maps/api/directions/json") do |f|
-        f.params[:origin] = params[:start]
-        f.params[:destination] = params[:end]
+        f.params[:origin] = start_location
+        f.params[:destination] = end_location
         f.params[:key] = ENV["GEOCODING_API_KEY"]
       end
 
