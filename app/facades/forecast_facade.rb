@@ -73,9 +73,9 @@ class ForecastFacade
 
   def find_date_time(unix_datetime, date_or_time)
     if date_or_time == "time"
-      DateTime.strptime("#{unix_datetime + timezone_offset}",'%s').strftime("%l:%M %p")
+      time = DateTime.strptime("#{unix_datetime + timezone_offset}",'%s').strftime("%l:%M %p")
     elsif date_or_time == "date"
-      DateTime.strptime("#{unix_datetime + timezone_offset}",'%s').strftime("%l:%M %p, %B %d")
+      date = DateTime.strptime("#{unix_datetime + timezone_offset}",'%s').strftime("%l:%M %p, %B %d")
     end
   end
 
