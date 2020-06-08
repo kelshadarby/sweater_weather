@@ -36,9 +36,11 @@ class ForecastFacade
   end
 
   def location_info
-    {city: @geocode_object.city,
+    {
+     city: @geocode_object.city,
      state: @geocode_object.state,
-     country: @geocode_object.country}
+     country: @geocode_object.country
+    }
   end
 
   def low_temp
