@@ -25,7 +25,7 @@ class FoodieFacade
   end
 
   def travel_time
-    trip_object.duration
+    trip_duration
   end
 
   private
@@ -40,7 +40,7 @@ class FoodieFacade
     forecast_service.get_forecast_objects
   end
 
-  def trip_object
-    (GeocodingService.new).get_trip_object(@start_location, @end_location)
+  def trip_duration
+    (GeocodingService.new).get_trip_duration(@start_location, @end_location)
   end
 end

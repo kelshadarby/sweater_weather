@@ -4,8 +4,9 @@ class GeocodingService
     Geocode.new(geocode_info)
   end
 
-  def get_trip_object(start_location, end_location)
-    Trip.new(get_trip_info(start_location, end_location))
+  def get_trip_duration(start_location, end_location)
+    response = get_trip_info(start_location, end_location)
+    response[:routes][0][:legs][0][:duration][:text]
   end
 
   private
