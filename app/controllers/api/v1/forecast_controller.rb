@@ -6,10 +6,7 @@ class Api::V1::ForecastController < ApplicationController
   private
 
   def get_forecast_object
-    (ForecastService.new).get_forecast_objects(get_geocode_object)
-  end
-
-  def get_geocode_object
-    (GeocodingService.new).get_geocode_objects(params[:location])
+    forecast_service = ForecastService.new(params[:location])
+    forecast_service.get_forecast_objects
   end
 end
