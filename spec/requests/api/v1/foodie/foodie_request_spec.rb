@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSPec.describe "Forecast Food Request" do
+RSpec.describe "Foodie Request" do
   it "Destination Forecast and Food Request" do
     get '/api/v1/foodie?start=denver,co&end=pueblo,co&search=italian'
 
