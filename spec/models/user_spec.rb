@@ -6,7 +6,8 @@ RSpec.describe User, type: :model do
   end
   describe "Instance Methods" do
     it "generate_unique_api_key" do
-      user = User.create(email: 'email@example.com')
+      user = User.create(email: 'email@example.com',
+                         password: "password")
       expect(user.api_key).to_not eq(nil)
 
       user_2 = User.create(email: 'email2@example.com')
