@@ -7,7 +7,7 @@ RSpec.describe "User Login" do
       "password": "password",
       "password_confirmation": "password"
     }
-    post "/api/v1/users", params: {user: user_params}
+    post "/api/v1/users", params: user_params
 
     expect(response).to be_successful
 
@@ -15,7 +15,7 @@ RSpec.describe "User Login" do
       "email": "whatever@example.com",
       "password": "password"
     }
-    post "/api/v1/sessions", params: {user: user_params}
+    post "/api/v1/sessions", params: user_params
 
     expect(response).to be_successful
 
@@ -41,7 +41,20 @@ RSpec.describe "User Login" do
       "email": "whatever@example.com",
       "password": "password"
     }
-    post "/api/v1/sessions", params: {user: user_params}
+    post "/api/v1/sessions", params: user_params
+
+    expect(response).to_not be_successful
+
+    session_response = JSON.parse(response.body, symbolize_names: true)
+
+    expect(session_response[:error]).to eq("Bad credentials. Please double check login request.")
+  end
+  it "Session Creation - Incorrect Password" do
+    user_params = {
+      "email": "whatever@example.com",
+      "password": "password_2"
+    }
+    post "/api/v1/sessions", params: user_params
 
     expect(response).to_not be_successful
 

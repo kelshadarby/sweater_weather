@@ -7,13 +7,13 @@ RSpec.describe "Road Trip Request" do
       "password": "password",
       "password_confirmation": "password"
     }
-    post "/api/v1/users", params: {user: user_params}
+    post "/api/v1/users", params: user_params
 
     user_params = {
       "email": "whatever@example.com",
       "password": "password"
     }
-    post "/api/v1/sessions", params: {user: user_params}
+    post "/api/v1/sessions", params: user_params
 
     expect(response).to be_successful
 

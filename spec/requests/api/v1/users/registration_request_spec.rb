@@ -7,7 +7,7 @@ RSpec.describe "User Creation" do
       "password": "password",
       "password_confirmation": "password"
     }
-    post "/api/v1/users", params: {user: user_params}
+    post "/api/v1/users", params: user_params
 
     expect(response).to be_successful
 
@@ -32,7 +32,7 @@ RSpec.describe "User Creation" do
       "password": "password",
       "password_confirmation": "password"
     }
-    post "/api/v1/users", params: {user: user_params}
+    post "/api/v1/users", params: user_params
 
     expect(response).to be_successful
 
@@ -41,7 +41,7 @@ RSpec.describe "User Creation" do
       "password": "password",
       "password_confirmation": "password"
     }
-    post "/api/v1/users", params: {user: user_params}
+    post "/api/v1/users", params: user_params
 
     expect(response).to_not be_successful
 
@@ -55,7 +55,7 @@ RSpec.describe "User Creation" do
       "password": "password",
       "password_confirmation": "password_2"
     }
-    post "/api/v1/users", params: {user: user_params}
+    post "/api/v1/users", params: user_params
 
     expect(response).to_not be_successful
 
@@ -69,7 +69,7 @@ RSpec.describe "User Creation" do
       "password": "password",
       "password_confirmation": "password"
     }
-    post "/api/v1/users", params: {user: user_params}
+    post "/api/v1/users", params: user_params
 
     expect(response).to_not be_successful
 
