@@ -36,9 +36,11 @@ class ForecastFacade
   end
 
   def location_info
-    {city: @geocode_object.city,
+    {
+     city: @geocode_object.city,
      state: @geocode_object.state,
-     country: @geocode_object.country}
+     country: @geocode_object.country
+    }
   end
 
   def low_temp
@@ -71,37 +73,37 @@ class ForecastFacade
 
   private
 
-  def find_date_time(unix_datetime, date_or_time)
-    if date_or_time == "time"
-      DateTime.strptime("#{unix_datetime + timezone_offset}",'%s').strftime("%l:%M %p")
-    elsif date_or_time == "date"
-      DateTime.strptime("#{unix_datetime + timezone_offset}",'%s').strftime("%l:%M %p, %B %d")
+    def find_date_time(unix_datetime, date_or_time)
+      if date_or_time == "time"
+        DateTime.strptime("#{unix_datetime + timezone_offset}",'%s').strftime("%l:%M %p")
+      elsif date_or_time == "date"
+        DateTime.strptime("#{unix_datetime + timezone_offset}",'%s').strftime("%l:%M %p, %B %d")
+      end
     end
-  end
 
-  def hour_info(forecast_info)
-    hourly_weather_forecast = []
-    forecast_info[:hourly][0..7].each_with_index do |info, index|
-      hourly_weather_forecast << {
-        time: DateTime.strptime("#{(info[:dt] + timezone_offset)}",'%s').strftime("%l %p"),
-        temp: info[:temp].to_i,
-        description: info[:weather][0][:description].titleize
-      }
+    def hour_info(forecast_info)
+      hourly_weather_forecast = []
+      forecast_info[:hourly][0..7].each_with_index do |info, index|
+        hourly_weather_forecast << {
+          time: DateTime.strptime("#{(info[:dt] + timezone_offset)}",'%s').strftime("%l %p"),
+          temp: info[:temp].to_i,
+          description: info[:weather][0][:description].titleize
+        }
+      end
+      return hourly_weather_forecast
     end
-    return hourly_weather_forecast
-  end
 
-  def week_info(forecast_info)
-    week_weather_forecast = []
-    forecast_info[:daily][0..6].each_with_index do |info, index|
-      week_weather_forecast << {
-        day_of_week: DateTime.strptime("#{(info[:dt] + timezone_offset)}", "%s").strftime("%A"),
-        description: info[:weather][0][:description].titleize,
-        precipitation: info[:rain].nil? ? "0 mm" : "#{info[:rain].to_i} mm",
-        high_temp: info[:temp][:max],
-        low_temp: info[:temp][:min]
-      }
+    def week_info(forecast_info)
+      week_weather_forecast = []
+      forecast_info[:daily][0..6].each_with_index do |info, index|
+        week_weather_forecast << {
+          day_of_week: DateTime.strptime("#{(info[:dt] + timezone_offset)}", "%s").strftime("%A"),
+          description: info[:weather][0][:description].titleize,
+          precipitation: info[:rain].nil? ? "0 mm" : "#{info[:rain].to_i} mm",
+          high_temp: info[:temp][:max],
+          low_temp: info[:temp][:min]
+        }
+      end
+      return week_weather_forecast
     end
-    return week_weather_forecast
-  end
 end

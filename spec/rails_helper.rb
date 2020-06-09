@@ -1,4 +1,7 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
+require 'simplecov'
+SimpleCov.start
+
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
@@ -72,7 +75,7 @@ VCR.configure do |config|
   config.filter_sensitive_data('<GEOCODING_API_KEY') { ENV['GEOCODING_API_KEY'] }
   config.filter_sensitive_data('<UNSPLASH_ACCESS_KEY') { ENV['UNSPLASH_ACCESS_KEY'] }
   config.configure_rspec_metadata!
-  config.allow_http_connections_when_no_cassette = true
+  # config.allow_http_connections_when_no_cassette = true
 end
 
 Shoulda::Matchers.configure do |config|

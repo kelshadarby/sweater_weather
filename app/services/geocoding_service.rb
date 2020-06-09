@@ -4,6 +4,14 @@ class GeocodingService
     Geocode.new(geocode_info)
   end
 
+  def get_trip_duration(start_location, end_location)
+    response = get_trip_info(start_location, end_location)
+    {
+      text: response[:routes][0][:legs][0][:duration][:text],
+      value: response[:routes][0][:legs][0][:duration][:value]
+    }
+  end
+
   private
 
     def get_geocode(city_state)
@@ -12,5 +20,15 @@ class GeocodingService
         f.params[:key] = ENV['GEOCODING_API_KEY']
       end
       JSON.parse(response.body, symbolize_names: true)
+    end
+
+    def get_trip_info(start_location, end_location)
+      trip_response = Faraday.get("https://maps.googleapis.com/maps/api/directions/json") do |f|
+        f.params[:origin] = start_location
+        f.params[:destination] = end_location
+        f.params[:key] = ENV["GEOCODING_API_KEY"]
+      end
+
+      JSON.parse(trip_response.body, symbolize_names: true)
     end
 end

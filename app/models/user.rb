@@ -1,25 +1,20 @@
 class User < ApplicationRecord
-  before_validation :generate_unique_api_key, on: :create
+  before_create :set_unique_api_key
 
   validates :email, uniqueness: true, presence: true
   validates :api_key, uniqueness: true
   has_secure_password
 
-  def generate_unique_api_key
-    key = generate_api_key
-    if User.find_by(api_key: key)
-      until !(User.find_by(api_key: key)) do
-        new_key = generate_api_key
-      end
-      self.api_key = new_key
-    else
-      self.api_key = key
-    end
-  end
-
   private
 
-  def generate_api_key
-    Array.new(27){[*"A".."Z", *"a".."z", *"0".."9"].sample}.join
-  end
+    def set_unique_api_key
+      self.api_key = generate_key
+    end
+
+    def generate_key
+      loop do
+        key = SecureRandom.hex(10)
+        break key unless User.where(api_key: key).exists?
+      end
+    end
 end
