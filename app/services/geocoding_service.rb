@@ -6,7 +6,10 @@ class GeocodingService
 
   def get_trip_duration(start_location, end_location)
     response = get_trip_info(start_location, end_location)
-    response[:routes][0][:legs][0][:duration][:text]
+    {
+      text: response[:routes][0][:legs][0][:duration][:text],
+      value: response[:routes][0][:legs][0][:duration][:value]
+    }
   end
 
   private
