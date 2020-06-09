@@ -19,7 +19,7 @@ RSpec.describe "Road Trip Request" do
 
     @user_info = JSON.parse(response.body, symbolize_names: true)
   end
-  it "Destination Forecast and Road Trip Info" do
+  it "Destination Forecast and Road Trip Info", :vcr do
     road_trip_params = {
       "origin": "Denver,CO",
       "destination": "Pueblo,CO",
@@ -57,7 +57,7 @@ RSpec.describe "Road Trip Request" do
     expect(parsed_road_trip_response[:data][:attributes][:destination]).to eq(road_trip_params[:destination])
     expect(parsed_road_trip_response[:data][:attributes][:travel_time]).to eq("1 hour 48 mins")
   end
-  it "Destination Forecast and Road Trip Info - Invalid API Key" do
+  it "Destination Forecast and Road Trip Info - Invalid API Key", :vcr do
     road_trip_params = {
       "origin": "Denver,CO",
       "destination": "Pueblo,CO",
@@ -72,7 +72,7 @@ RSpec.describe "Road Trip Request" do
     expect(parsed_road_trip_response[:errors]).to eq("Invalid API Key")
     expect(response.status).to eq(401)
   end
-  it "Destination Forecast and Road Trip Info - No API Key" do
+  it "Destination Forecast and Road Trip Info - No API Key", :vcr do
     road_trip_params = {
       "origin": "Denver,CO",
       "destination": "Pueblo,CO"

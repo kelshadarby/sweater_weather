@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "User Creation" do
-  it "User Registration" do
+  it "User Registration", :vcr do
     user_params = {
       "email": "whatever@example.com",
       "password": "password",
@@ -25,7 +25,7 @@ RSpec.describe "User Creation" do
     expect(parsed_user_registration[:data][:attributes][:email]).to_not eq(nil)
     expect(parsed_user_registration[:data][:attributes][:api_key]).to_not eq(nil)
   end
-  it "User Registration - Email Taken" do
+  it "User Registration - Email Taken", :vcr do
     user_params = {
       "email": "whatever@example.com",
       "password": "password",
@@ -48,7 +48,7 @@ RSpec.describe "User Creation" do
 
     expect(parsed_user_registration_2[:errors][0]).to eq("Email has already been taken")
   end
-  it "User Registration - Passwords Don't Match" do
+  it "User Registration - Passwords Don't Match", :vcr do
     user_params = {
       "email": "whatever@example.com",
       "password": "password",
@@ -62,7 +62,7 @@ RSpec.describe "User Creation" do
 
     expect(parsed_user_registration_2[:errors][0]).to eq("Password confirmation doesn't match Password")
   end
-  it "User Registration - Missing Field" do
+  it "User Registration - Missing Field", :vcr do
     user_params = {
       "email": nil,
       "password": "password",
