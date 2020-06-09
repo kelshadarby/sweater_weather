@@ -17,14 +17,13 @@ RSpec.describe User, type: :model do
                            api_key: '08374d9df11ad1baf159d4f63ed80c61')
 
       expect(User.last).to eq(user_3)
-      expect{User.find(user_3.id)}.to_not raise_error(ActiveRecord::RecordNotFound)
 
       user_4 = User.create(email: 'email4@example.com',
                            password: "password",
                            api_key: '08374d9df11ad1baf159d4f63ed80c61')
 
-      expect{User.find(user_4.id)}.to_not raise_error(ActiveRecord::RecordNotFound)
       expect(user_4.api_key).to_not eq('08374d9df11ad1baf159d4f63ed80c61')
+      expect(User.last).to eq(user_4)
     end
   end
 end
