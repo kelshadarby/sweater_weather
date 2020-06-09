@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "User Login" do
-  it "Session Creation", :vcr do
+  it "Session Creation" do
     user_params = {
       "email": "whatever@example.com",
       "password": "password",
@@ -36,7 +36,7 @@ RSpec.describe "User Login" do
     expect(session_response[:data][:attributes][:email]).to_not eq(nil)
     expect(session_response[:data][:attributes][:api_key]).to_not eq(nil)
   end
-  it "Session Creation - Incorrect Email", :vcr do
+  it "Session Creation - Incorrect Email" do
     user_params = {
       "email": "whatever@example.com",
       "password": "password"

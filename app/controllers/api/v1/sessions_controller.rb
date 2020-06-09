@@ -8,10 +8,4 @@ class Api::V1::SessionsController < ApplicationController
       render json: { error: "Bad credentials. Please double check login request." }, status: 420
     end
   end
-
-  private
-
-  def user_params
-    params.require(:user).permit(:email)
-  end
 end
