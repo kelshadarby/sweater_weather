@@ -5,7 +5,7 @@ class Api::V1::SessionsController < ApplicationController
       session[:user] = user
       render json: UsersSerializer.new(user)
     else
-      render json: { error: "Bad credentials. Please double check login request." }, status: 422
+      render json: { error: "Bad credentials. Please double check login request." }, status: 420
     end
   end
 
