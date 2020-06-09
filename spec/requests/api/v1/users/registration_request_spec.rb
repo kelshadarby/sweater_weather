@@ -17,8 +17,6 @@ RSpec.describe "User Creation" do
     expect(parsed_user_registration[:data]).to have_key(:type)
     expect(parsed_user_registration[:data]).to have_key(:id)
     expect(parsed_user_registration[:data]).to have_key(:attributes)
-    expect(parsed_user_registration[:data][:attributes]).to have_key(:email)
-    expect(parsed_user_registration[:data][:attributes]).to have_key(:api_key)
 
     expect(parsed_user_registration[:data]).to_not eq(nil)
     expect(parsed_user_registration[:data][:type]).to eq("users")
