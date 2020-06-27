@@ -10,8 +10,10 @@ RSpec.describe User, type: :model do
                          password: "password")
       expect(user.api_key).to_not eq(nil)
 
-      user_2 = User.create(email: 'email2@example.com')
+      user_2 = User.create(email: 'email2@example.com',
+                           password: "password")
       expect(user_2.api_key).to_not eq(user.api_key)
+      expect(user_2.api_key).to_not eq(nil)
 
       user_3 = User.create(email: 'email3@example.com',
                            password: "password",
