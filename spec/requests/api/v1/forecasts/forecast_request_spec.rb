@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Forecast Request" do
   describe "Forecast By City" do
-    it "Upper Left Box", :vcr do
+    it "Upper Left Box" do
       get "/api/v1/forecast?location=denver,co"
 
       expect(response).to be_successful
@@ -19,7 +19,7 @@ RSpec.describe "Forecast Request" do
       expect(forecast_response[:data][:attributes][:low_temp]).to_not eq(nil)
     end
 
-    it "Upper Left Box", :vcr do
+    it "Upper Left Box" do
       get "/api/v1/forecast?location=denver,co"
 
       expect(response).to be_successful
@@ -34,7 +34,7 @@ RSpec.describe "Forecast Request" do
       expect(forecast_response[:data][:attributes][:sunset_time]).to_not eq(nil)
     end
 
-    it "Lower Box, Today", :vcr do
+    it "Lower Box, Today" do
       get "/api/v1/forecast?location=denver,co"
 
       expect(response).to be_successful
@@ -53,7 +53,7 @@ RSpec.describe "Forecast Request" do
 
     end
 
-    it "Lower Box, Week", :vcr do
+    it "Lower Box, Week" do
       get "/api/v1/forecast?location=denver,co"
 
       expect(response).to be_successful
@@ -76,7 +76,7 @@ RSpec.describe "Forecast Request" do
     end
   end
   describe "Forecast Background Images by City" do
-    it "Background Image Request", :vcr do
+    it "Background Image Request" do
       get "/api/v1/backgrounds?location=denver,co"
 
       expect(response).to be_successful
