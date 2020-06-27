@@ -1,6 +1,12 @@
 language: ruby
 rvm:
 - 2.5.3
+addons:
+  postgresql: 9.6
+  chrome: stable
+before_install:
+- yes | gem update --system --force
+- gem install bundler
 script:
 - yarn
 - bundle exec rails db:{create,migrate} RAILS_ENV=test
@@ -9,10 +15,6 @@ deploy:
   provider: heroku
   api_key:
     secure:
-    OPEN_WEATHER_API: 8b0455632c870ed1f0fa5da14ffccfe6
-    GEOCODING_API_KEY: AIzaSyBIPdFTCwhCGhTYgMOsm8R6JVJqMqeeV0U
-    UNSPLASH_ACCESS_KEY: qPXPO-mtsHKAQwclHBQv_aQ6abE3u3uwSk9W_0KSvEs
-    UNSPLASH_SECRET_KEY: Ug1LemyqHz9zv0ESTFO0CB6RcTOd6ded1Jl_Ew42B48
   app: kd-sweater-weaher
   run: rails db:{migrate,seed}
   on:
