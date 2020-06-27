@@ -13,7 +13,9 @@ script:
 - bundle exec rspec
 deploy:
   provider: heroku
-  app: kd-sweater-weaher
+  api_key:
+    secure: b7w2O/E7aUHtJSwe0AmWS8ZFH8fDL+IfcZfOJ4p6uByZXNYLe/YoTZbYJgx19nzPENFDkf3zTjp/PyC7WAmXlIw0ul4jasZNghilO6wFqx4TBK6HbtAG23CY8cAHY2hbJAfvwbvcip2WdeQS+Oi1J8YVOTUgDrV0pnJTmHF0hsdCNd+Rfjl8qDdVlQvsq8Gc1aMnPWS1yJn26MwxNlMya4O8upE00+R5oJr69A+oxXx5EjsxcctWkl53vSqpM8XxtWAPGufKg6cBfSBhEgBA6qU9XrumI1sidKqWhMBPPRT8jwScFxcLlj0M5gNP7lb8coANEWKQx4l1eCZYAG4LITqz1n4oIkEgA5PnL60K03Lsah68SEBLOUcVIK4p8Zu6iduTvkA2oFl/3rLAslVgOOPfVXr7nHXTn8otGBr6qu6WzNBN8dkkfzgMRmTDfla/gtSw35xnvwzxFpgHC1uQcjREtBIc4ybysD/hrEt1UM4xxoKHGC7LRSkp2yaJuA1DjbuWikpdvLxd+ynv9iOvRD/2scKYOCo51P15UDCuyz9v79h2tSnaO2bAfXdD74gCIrsC9QXXtX1LNWyKTdwbr/tJkCIMkQ/QjSZ8ybLCAkfqYWkeAeJEdpnAVmyU6dtHlLB0xxoa4wyuhQ6KmZtSNr+r7qOomTKGe1nmBOW3y1Y=
+  app: kd-sweater-weather
   run: rails db:{migrate,seed}
   on:
     repo: kelshadarby/sweater_weather
