@@ -13,8 +13,6 @@ script:
 - bundle exec rspec
 deploy:
   provider: heroku
-  api_key:
-    secure:
   app: kd-sweater-weaher
   run: rails db:{migrate,seed}
   on:
