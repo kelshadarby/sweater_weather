@@ -47,7 +47,7 @@ Step 3:
     <img width="934" alt="Location Forecast Request" src="https://user-images.githubusercontent.com/55028065/88312997-2557db00-ccd0-11ea-948f-45ac253a2cf8.png">
 
 
-#### Here are some more sample requests you can make using Postman
+### Here are some more sample requests you can make using Postman
 
 __Forecast for a Location__
 This endpoint allows you to enter a location and recieve forecast information about that location. The information returned includes:
