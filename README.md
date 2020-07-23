@@ -47,9 +47,9 @@ Step 3:
     <img width="934" alt="Location Forecast Request" src="https://user-images.githubusercontent.com/55028065/88312997-2557db00-ccd0-11ea-948f-45ac253a2cf8.png">
 
 
-### Here are some more sample requests you can make using Postman
+## Here are some more sample requests you can make using Postman
 
-__Forecast for a Location__
+### Forecast for a Location
 
 This endpoint allows you to enter a location and recieve forecast information about that location. The information returned includes:
 * Temperature
@@ -125,7 +125,7 @@ Response:
 }
 ```
 
-__User Creation__
+### User Creation
 
 This endpoint allows you to enter an email, password and password confirmation to register as a user. This request will return the email used to sign up and a generated API key to be used when the user creates a road trip.
 
@@ -151,7 +151,7 @@ Response:
 }
 ```
 
-__Login__
+### Login
 
 This endpoint allows you to enter an email and password to login as a user. This request will return the email used to login and a generated API key to be used when the user creates a road trip.
 
@@ -175,7 +175,7 @@ Response:
 }
 ```
 
-__Arrival Forecast and Trip Duration__
+### Arrival Forecast and Trip Duration
 
 This endpoint allows you to enter a starting location and destination to create a road trip and recieve weather and trip information. This request will return the starting location, the destination location, how long the trip will take and the forecast upon arrival. This endpoint requires a user API key given upon logina nd usert creation
 
