@@ -263,9 +263,15 @@ Notes:
 - Your line number should be the line of the beginning of the `it` block
 - Example: `spec/features/items/index_spec.rb:15`
 
-## Built With
+## Built Using
 
 * [Rails](https://guides.rubyonrails.org/) - The web framework used
+
+## API's Used
+* [Open Weather API - Current Weather](https://openweathermap.org/current)
+* [Open Weather API - One Call](https://openweathermap.org/api/one-call-api)
+* [Google Geocoding API](https://developers.google.com/maps/documentation/geocoding/overview)
+* [Google Directions API](https://developers.google.com/maps/documentation/directions/overview)
 
 ## Wireframes
 ### Forecast
