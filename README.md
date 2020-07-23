@@ -5,7 +5,10 @@ Sweater Weather is a back-end API built in Rails. This API consumes weather and 
 ## Getting Started
 
 Clone this repo onto your local machine
-Run the following commands in your terminal to get the code up and running on your local machine (make sure to run each of these without the $)
+
+Run the following commands in your terminal to get the code up and running on your local machine 
+
+- Make sure to run each of these without the $
 
 ```
 $ bundle
@@ -16,7 +19,7 @@ $ rake db:seed
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+You will need to have the following in order to run this app on your local machine.
 
 ```
 Rails 5.2.4.3
@@ -47,6 +50,18 @@ Step 3:
 #### Here are some more sample requests you can make using Postman
 
 __Forecast for a Location__
+This endpoint allows you to enter a location and recieve forecast information about that location. The information returned includes:
+* Temperature
+* Description
+* Date and Time
+* "Feels like"
+* High & low temp of the day
+* Sunrise & sunset times
+* UV Index
+* Visibility
+
+Here is an example of what the request and response will look like for this endpoint:
+
 ```
 POST '/api/v1/forecast'
 Parameters:
@@ -73,36 +88,7 @@ Response:
           "temp": 85,
           "description": "Clear Sky"
         },
-        {
-          "time": " 1 PM",
-          "temp": 88,
-          "description": "Clear Sky"
-        },
-        {
-          "time": " 2 PM",
-          "temp": 91,
-          "description": "Clear Sky"
-        },
-        {
-          "time": " 3 PM",
-          "temp": 92,
-          "description": "Scattered Clouds"
-        },
-        {
-          "time": " 4 PM",
-          "temp": 91,
-          "description": "Broken Clouds"
-        },
-        {
-          "time": " 5 PM",
-          "temp": 89,
-          "description": "Broken Clouds"
-        },
-        {
-          "time": " 6 PM",
-          "temp": 89,
-          "description": "Broken Clouds"
-        }
+        ...
       ],
       "humidity": "35%",
       "location_info": {
@@ -131,41 +117,7 @@ Response:
           "high_temp": 87.91,
           "low_temp": 72.45
         },
-        {
-          "day_of_week": "Saturday",
-          "description": "Broken Clouds",
-          "precipitation": "0 mm",
-          "high_temp": 91.02,
-          "low_temp": 70.41
-        },
-        {
-          "day_of_week": "Sunday",
-          "description": "Overcast Clouds",
-          "precipitation": "0 mm",
-          "high_temp": 85.5,
-          "low_temp": 74.16
-        },
-        {
-          "day_of_week": "Monday",
-          "description": "Light Rain",
-          "precipitation": "0 mm",
-          "high_temp": 92.28,
-          "low_temp": 71.64
-        },
-        {
-          "day_of_week": "Tuesday",
-          "description": "Light Rain",
-          "precipitation": "0 mm",
-          "high_temp": 87.33,
-          "low_temp": 73.56
-        },
-        {
-          "day_of_week": "Wednesday",
-          "description": "Clear Sky",
-          "precipitation": "0 mm",
-          "high_temp": 95.22,
-          "low_temp": 72.79
-        }
+        ...
       ]
     }
   }
@@ -173,6 +125,10 @@ Response:
 ```
 
 __User Creation__
+This endpoint allows you to enter an email, password and password confirmation to register as a user. This request will return the email used to sign up and a generated API key to be used when the user creates a road trip.
+
+Here is an example of what the request and response will look like for this endpoint:
+
 ```
 POST '/api/v1/users'
 Parameters:
@@ -194,6 +150,9 @@ Response:
 ```
 
 __Login__
+This endpoint allows you to enter an email and password to login as a user. This request will return the email used to login and a generated API key to be used when the user creates a road trip.
+
+Here is an example of what the request and response will look like for this endpoint:
 ```
 POST '/api/v1/sessions'
 paramaters:
@@ -214,6 +173,9 @@ Response:
 ```
 
 __Arrival Forecast and Trip Duration__
+This endpoint allows you to enter a starting location and destination to create a road trip and recieve weather and trip information. This request will return the starting location, the destination location, how long the trip will take and the forecast upon arrival. This endpoint requires a user API key given upon logina nd usert creation
+
+Here is an example of what the request and response will look like for this endpoint:
 ```
 GET '/api/v1/road_trip'
 Paramaters:
@@ -239,10 +201,10 @@ Response:
 ## Running the tests
 __To run the entire test suite on your local machine run the following command__
 ```
-$ rspec
+$ bundle exec rspec
 ```
 
-Note: You may need to prepend this command with `bundle exec`
+Note: You may be able to run this command using just `exec`
 
 
 __To run a specific test file run the following command__
